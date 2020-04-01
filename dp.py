@@ -19,3 +19,4 @@ if __name__ == '__main__':
     doctest.testmod(verbose=True)
     print [1,2,-2,4,-5,2], maxSubSum([1,2,-2,4,-5,2])
     print [1,5,7,-22,4,9,-5,2], maxSubSum([1,5,7,-22,4,9,-5,2])
+    print [-1,-5,-7,-22,4,-9,-5,-2,-7], maxSubSum([-1,-5,-7,-22,4,-9,-5,-2,-7])
