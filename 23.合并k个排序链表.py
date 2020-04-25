@@ -90,20 +90,30 @@ class Solution(object):
         #     minL.next = Solution().mergeKLists(newList)
         # return minL
     
-        # 运用归并递归 不会超时 时间复杂度O(NlogN)
+        # 运用归并递归 不会超时 时间复杂度O(NlogM)
+        # if not lists:
+        #     return
+        # length = len(lists)
+        # newList = []
+        # for i in xrange(0, length, 2):
+        #     if i == length - 1:
+        #         newList.append(lists[i])
+        #     else:
+        #         newList.append(mergeTwoLists(*lists[i:i+2]))
+        # if len(newList) == 1:
+        #     return newList[0]
+        # return Solution().mergeKLists(newList)
+    
+        # 归并非递归
         if not lists:
             return
         length = len(lists)
-        newList = []
-        for i in xrange(0, length, 2):
-            if i == length - 1:
-                newList.append(lists[i])
-            else:
-                newList.append(mergeTwoLists(*lists[i:i+2]))
-        if len(newList) == 1:
-            return newList[0]
-        return Solution().mergeKLists(newList)
-            
+        interval = 1
+        while interval < length:
+            for i in xrange(0, length-interval, interval*2):
+                lists[i] = mergeTwoLists(lists[i], lists[i+interval])
+            interval *= 2
+        return lists[0]
             
 # @lc code=end
 
